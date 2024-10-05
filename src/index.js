@@ -1,22 +1,5 @@
-//index.js
-const API_URL = "https://animal-api-two.vercel.app/";
+import App from "./src/App.js";
 
-const $content = document.querySelector("div.content");
-let template = [];
+const $app = document.getElementById("app");
 
-const getData = async () => {
-  let res = await fetch(API_URL);
-  try {
-    if (res) {
-      let data = await res.json();
-      data.photos.forEach((elm) => {
-        template += `<img src="${elm.url}"></img>`; // 여러개의 이미지 태그를 template 이라는 변수에 모두 담음
-      });
-      $content.innerHTML = template;
-    }
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-getData();
+let app = new App($app);
